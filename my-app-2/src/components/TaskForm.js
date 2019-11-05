@@ -1,9 +1,10 @@
 import React,{ Component } from 'react';
 
 class TaskForm extends Component{
-    state = {title: '',description: '',area:''};
+    state = {title: '',description: ''};
     handleSubmit = (event) =>{
-        console.log(this.state);
+        
+        this.props.addtask(this.state.title,this.state.description);
         event.preventDefault();
     }
     handleChange = (event) =>{
@@ -12,17 +13,18 @@ class TaskForm extends Component{
         })
     }
     render(){
+
+      
        return <div>
            <form onSubmit={this.handleSubmit}>
         <label>
           Name:
           <input name = "title" type="text" value={this.state.title} onChange={this.handleChange} />
         </label>
-        <label>
-          Name:
-          <input name = "description" type="text" value={this.state.description} onChange={this.handleChange} />
-        </label>
-        <textarea name = "area" type = "text" onChange = {this.handleChange} value = {this.state.area}></textarea>
+        <br></br>
+        <br></br>
+        <textarea name = "description" type = "text" onChange = {this.handleChange} value = {this.state.description}></textarea>
+        <br></br>
         <input type="submit" value="Submit" />
       </form>
        </div>
